@@ -29,6 +29,10 @@
 
 # Nội Dung
 
+# Summary
+
+Cross-Site Scripting là lỗ hổng cho phép attacker chèn những đoạn javascript và thực thi ở phía client. Nguyên nhân do không validate input từ phía người dùng và sử dụng các thuộc tính nguy hiểm như `innerHTML` và `document.write` mà không kiểm tra kĩ lưỡng untrusted data.
+
 # 1. Basic Reflected
 
 ![image](https://github.com/user-attachments/assets/dc63751b-1674-4010-a731-ea0e8d9b653d)
