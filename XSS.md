@@ -1,12 +1,14 @@
+
 # Khai Thác Lỗ Hổng Cross-Site Scripting
 
 > VulnLab: Cross-Site Scripting (XSS)
 
 > Thực Hiện: Nguyễn Khánh Hào
 
-> Cập Nhật Lần Cuối: 4/10/2024
+> Cập Nhật Lần Cuối: 7/10/2024
 
 # Mục Lục
+
 [1. Basic Reflected](#1.-basic-reflected)
 
 [2. Stored Message](#2.-stored-message)
@@ -23,10 +25,11 @@
 
 [8. File Upload](#8.-file-upload)
 
+[Khuyến Nghị Khắc Phục](#khuyen-nghi-khac-phuc)
+
 # Nội Dung
 
 # 1. Basic Reflected
-
 
 ![image](https://github.com/user-attachments/assets/dc63751b-1674-4010-a731-ea0e8d9b653d)
 
@@ -184,3 +187,31 @@ Do laptop mình không đặt được file name có kí tự như `<`, `>` nên
 Final payload: `%22%3e%3c%73%63%72%69%70%74%3e%61%6c%65%72%74%28%32%29%3c%2f%73%63%72%69%70%74%3e`
 
 ![image](https://github.com/user-attachments/assets/b6c835ef-5e54-46de-b861-dde10a6ffb4a)
+
+# Khuyến Nghị Khắc Phục
+
+1. Sử dụng HTTPOnly và Secure Cookies:
+
+    Đặt thuộc tính HttpOnly cho cookie để ngăn không cho JavaScript truy cập vào cookie.
+    Sử dụng thuộc tính Secure cho cookie để đảm bảo chúng chỉ được gửi qua HTTPS.
+
+2. Thực hiện Content Security Policy (CSP):
+
+    Thiết lập CSP để giới hạn nguồn gốc của nội dung có thể được tải và thực thi trên trang web. Điều này giúp ngăn chặn việc thực thi mã độc.
+   
+3. Tránh sử dụng các thuộc tính không an toàn:
+
+    Tránh việc sử dụng thuộc tính innerHTML, document.write, và các phương pháp tương tự mà có thể cho phép chèn mã JavaScript.
+
+4. Mã hóa đầu ra:
+
+    Mã hóa tất cả dữ liệu trước khi hiển thị lên trình duyệt, đặc biệt là dữ liệu từ người dùng. Sử dụng HTML entity encoding để chuyển đổi các ký tự đặc biệt thành dạng an toàn.
+
+5. Xác thực đầu vào:
+
+    Xác thực đầu vào: Kiểm tra và đảm bảo rằng tất cả dữ liệu đầu vào từ người dùng là hợp lệ.
+    Sử dụng thư viện để loại bỏ hoặc mã hóa các ký tự đặc biệt có thể gây ra lỗ hổng.
+
+6. Thực hiện kiểm tra bảo mật định kỳ:
+
+    Thực hiện kiểm tra xâm nhập và đánh giá bảo mật thường xuyên để phát hiện và khắc phục các lỗ hổng XSS có thể tồn tại.
